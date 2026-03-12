@@ -1,0 +1,23 @@
+# AI4RA Site Rework
+
+This repository holds the rework of the AI4RA public website as a community-of-practice hub with integrated open source release content for Vandalizer, AI4RA UDM, and OpenERA.
+
+## Direction
+
+The site should prioritize:
+
+- community of practice over product marketing
+- open source stewardship over feature promotion
+- editorial clarity over framework complexity
+- low-friction publishing for essays, field notes, events, and release updates
+
+## Proposed Stack
+
+- `Astro` for the main site and static rendering
+- `TypeScript` for implementation consistency
+- `Markdown/MDX` content collections for pages, essays, case studies, events, and release notes
+- `Starlight` for software documentation sections if the release docs live in this repo
+- `GitHub Actions` for build and deploy automation
+- static deployment target such as GitHub Pages, institutional hosting, or a simple containerized web host
+
+The detailed recommendation is in [`docs/site-architecture.md`](./docs/site-architecture.md).
