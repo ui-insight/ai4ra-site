@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const resourceTypes = [
+  "Guides and primers",
+  "Field notes and essays",
+  "Case studies",
+  "Talks and recordings",
+  "Release notes",
+  "Glossaries and shared vocabulary"
+];
+---
+
+<BaseLayout title="Resources | AI4RA">
+  <section class="page-intro">
+    <p class="eyebrow">Resources</p>
+    <h1>Make the site useful between events and releases.</h1>
+    <p>
+      A community site earns repeat visits by helping people think and act. This
+      section should become the library of practical materials, not just a document dump.
+    </p>
+  </section>
+
+  <section class="content-block">
+    <div class="resource-grid">
+      {
+        resourceTypes.map((item) => (
+          <article class="resource-card">
+            <h3>{item}</h3>
+            <p>Populate this collection with structured content and durable navigation.</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

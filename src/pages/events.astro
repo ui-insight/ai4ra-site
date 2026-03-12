@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const eventStreams = [
+  "Working sessions",
+  "Community conversations",
+  "Technical demos",
+  "Partner showcases"
+];
+---
+
+<BaseLayout title="Events | AI4RA">
+  <section class="page-intro">
+    <p class="eyebrow">Events</p>
+    <h1>Visible activity is how the site feels alive.</h1>
+    <p>
+      Keep events lightweight and current. The goal is to make participation concrete,
+      not to recreate a full event management system.
+    </p>
+  </section>
+
+  <section class="content-block">
+    <div class="card-grid">
+      {
+        eventStreams.map((stream) => (
+          <article class="content-card">
+            <h3>{stream}</h3>
+            <p>Use content collections for scheduling, summaries, and follow-up materials.</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

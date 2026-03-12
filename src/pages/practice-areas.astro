@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const areas = [
+  {
+    title: "Data Standards and Interoperability",
+    body: "Shared semantics, vocabularies, and institution-friendly data exchange patterns."
+  },
+  {
+    title: "Workflow and Service Design",
+    body: "Operational design patterns for proposal development, award management, and research support."
+  },
+  {
+    title: "Responsible AI in RA",
+    body: "Practical evaluation of where AI assists, where it should be constrained, and how accountability stays visible."
+  },
+  {
+    title: "Governance and Stewardship",
+    body: "Models for community ownership, contribution, and long-term maintenance."
+  },
+  {
+    title: "Implementation and Change",
+    body: "Case studies and field notes from institutions adapting shared ideas locally."
+  }
+];
+---
+
+<BaseLayout title="Practice Areas | AI4RA">
+  <section class="page-intro">
+    <p class="eyebrow">Practice areas</p>
+    <h1>Organize the site around the work, not just the outputs.</h1>
+    <p>
+      This section gives the community a durable structure for publishing guidance,
+      open questions, field notes, and implementation lessons.
+    </p>
+  </section>
+
+  <section class="content-block">
+    <div class="card-grid">
+      {
+        areas.map((area) => (
+          <article class="content-card">
+            <h3>{area.title}</h3>
+            <p>{area.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

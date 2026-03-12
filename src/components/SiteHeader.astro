@@ -1,0 +1,38 @@
+---
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/community", label: "Community" },
+  { href: "/practice-areas", label: "Practice Areas" },
+  { href: "/open-source", label: "Open Source" },
+  { href: "/resources", label: "Resources" },
+  { href: "/events", label: "Events" },
+  { href: "/about", label: "About" }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="shell">
+    <div class="brand-lockup">
+      <a class="brand-mark" href="/">AI4RA</a>
+      <p class="brand-line">Open practice for research administration</p>
+    </div>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                class:list={["nav-link", currentPath === item.href && "is-active"]}
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

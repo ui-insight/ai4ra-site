@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const groups = [
+  "Research administrators and program staff",
+  "Institutional leaders and operational stewards",
+  "Data, reporting, and systems professionals",
+  "Open source contributors and implementation partners"
+];
+
+const commitments = [
+  "Practitioner-centered design",
+  "Open collaboration",
+  "Trustworthy AI",
+  "Interoperability",
+  "Shared stewardship"
+];
+---
+
+<BaseLayout title="Community | AI4RA">
+  <section class="page-intro">
+    <p class="eyebrow">Community</p>
+    <h1>A home for people shaping the field together.</h1>
+    <p>
+      This section should become the clearest answer to who belongs in AI4RA, what the
+      community values, and how participation works in practice.
+    </p>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <h2 class="section-heading">Who this is for</h2>
+        <p class="section-copy">
+          AI4RA is strongest when the site speaks directly to the people doing the work
+          and the people responsible for sustaining it institutionally.
+        </p>
+      </div>
+      <ul class="plain-list">
+        {groups.map((group) => <li>{group}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <h2 class="section-heading">Shared commitments</h2>
+    <div class="card-grid">
+      {
+        commitments.map((commitment) => (
+          <article class="content-card">
+            <h3>{commitment}</h3>
+            <p>
+              Add concrete examples, principles, and participation pathways tied to this
+              commitment.
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = [
+  {
+    id: "udm",
+    name: "AI4RA UDM",
+    tag: "Shared data model",
+    body: "Position this as the shared language for data structures, interoperability, and institutional translation."
+  },
+  {
+    id: "openera",
+    name: "OpenERA",
+    tag: "Open operational platform",
+    body: "Frame this as the operational application layer for workflows and interoperable research administration services."
+  },
+  {
+    id: "vandalizer",
+    name: "Vandalizer",
+    tag: "AI workflow layer",
+    body: "Present this as a transparent AI automation layer shaped by practitioner use cases and explicit governance."
+  }
+];
+---
+
+<BaseLayout title="Open Source | AI4RA">
+  <section class="page-intro">
+    <p class="eyebrow">Open source</p>
+    <h1>Software as shared infrastructure for the community.</h1>
+    <p>
+      The release pages should connect code to purpose: why the community needs each
+      project, what values shaped it, and how institutions can evaluate, pilot, or
+      contribute.
+    </p>
+  </section>
+
+  <section class="content-block">
+    <div class="release-grid">
+      {
+        projects.map((project) => (
+          <article class="release-card" id={project.id}>
+            <span class="tag">{project.tag}</span>
+            <h3>{project.name}</h3>
+            <p>{project.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

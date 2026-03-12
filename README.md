@@ -21,3 +21,22 @@ The site should prioritize:
 - static deployment target such as GitHub Pages, institutional hosting, or a simple containerized web host
 
 The detailed recommendation is in [`docs/site-architecture.md`](./docs/site-architecture.md).
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Current Scaffold
+
+The repo now includes a minimal Astro app with initial routes for:
+
+- home
+- community
+- practice areas
+- open source
+- resources
+- events
+- about

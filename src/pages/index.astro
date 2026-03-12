@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const practiceAreas = [
+  {
+    title: "Data Standards",
+    body: "Build shared language for research administration data, reporting, and interoperability."
+  },
+  {
+    title: "Responsible AI",
+    body: "Explore where AI can support research administration without obscuring accountability."
+  },
+  {
+    title: "Operational Design",
+    body: "Document workflows, governance patterns, and implementation lessons from real institutions."
+  }
+];
+
+const participationPaths = [
+  "Join working sessions and shared conversations about practice.",
+  "Contribute use cases, field notes, and implementation questions.",
+  "Follow or pilot open source releases shaped by practitioner needs.",
+  "Help define governance, language, and stewardship norms for the ecosystem."
+];
+
+const releases = [
+  {
+    name: "AI4RA UDM",
+    tag: "Shared data model",
+    body: "A common foundation for research administration data exchange and interpretation."
+  },
+  {
+    name: "OpenERA",
+    tag: "Operational platform",
+    body: "An open application layer for workflows, institutional operations, and interoperable services."
+  },
+  {
+    name: "Vandalizer",
+    tag: "AI workflow layer",
+    body: "A transparent automation layer for experimentation and practical AI support in RA contexts."
+  }
+];
+---
+
+<BaseLayout
+  title="AI4RA | Community of Practice for Research Administration"
+  description="AI4RA is a community of practice advancing open, trustworthy, practitioner-centered research administration."
+>
+  <section class="hero">
+    <div class="hero-panel">
+      <div>
+        <p class="eyebrow">Community of practice</p>
+        <h1>Open practice for research administration.</h1>
+        <p class="hero-copy">
+          AI4RA convenes research administration professionals, institutional partners,
+          and technical collaborators to develop shared methods, shared language, and
+          open infrastructure for the field.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/community">Enter the community</a>
+          <a class="button-secondary" href="/open-source">Explore the ecosystem</a>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-card">
+          <strong>3</strong>
+          <span>Public releases anchoring the ecosystem</span>
+        </div>
+        <div class="stat-card">
+          <strong>5</strong>
+          <span>Practice domains for shared learning and field-building</span>
+        </div>
+        <div class="stat-card">
+          <strong>Open</strong>
+          <span>Governance, code, and institutional dialogue designed for contribution</span>
+        </div>
+        <div class="stat-card">
+          <strong>RA-led</strong>
+          <span>Built around practitioner knowledge rather than imported abstraction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <p class="eyebrow">Why this exists</p>
+    <h2 class="section-heading">A field needs more than software. It needs a commons.</h2>
+    <p class="section-copy">
+      The AI4RA site should function as a public home for shared inquiry, practical
+      guidance, and durable infrastructure. The software matters because it reflects
+      community values: interoperability over silos, stewardship over hype, and
+      collaborative public goods over isolated reinvention.
+    </p>
+    <div class="card-grid">
+      {
+        practiceAreas.map((item) => (
+          <article class="content-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <p class="eyebrow">Participation</p>
+        <h2 class="section-heading">Clear ways to belong and contribute.</h2>
+        <p class="section-copy">
+          Visitors should be able to find themselves in the site immediately whether
+          they are practitioners, institutional leaders, technical collaborators, or
+          contributors to the open source stack.
+        </p>
+      </div>
+      <ul class="plain-list">
+        {
+          participationPaths.map((item) => <li>{item}</li>)
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <p class="eyebrow">Open source</p>
+    <h2 class="section-heading">Community assets, not detached product pages.</h2>
+    <p class="section-copy">
+      AI4RA UDM, OpenERA, and Vandalizer should live inside a coherent ecosystem story,
+      each release page explaining why the community needs it, who shapes it, and how
+      to engage as a practitioner or contributor.
+    </p>
+    <div class="release-grid">
+      {
+        releases.map((release) => (
+          <article class="release-card">
+            <span class="tag">{release.tag}</span>
+            <h3>{release.name}</h3>
+            <p>{release.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="callout-band">
+    <div class="callout-panel">
+      <p class="eyebrow">Next build stage</p>
+      <h2 class="section-heading">Turn this into a living editorial and community platform.</h2>
+      <p>
+        The next step is to wire content collections, build the six primary sections,
+        and add durable release pages that connect ecosystem governance, participation,
+        and technical documentation.
+      </p>
+      <div class="cta-row">
+        <a class="button" href="/practice-areas">View practice areas</a>
+        <a class="button-secondary" href="/about">Read the framing</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
