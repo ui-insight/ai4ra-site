@@ -40,3 +40,15 @@ The repo now includes a minimal Astro app with initial routes for:
 - resources
 - events
 - about
+
+## Content Collections
+
+The Astro content model currently includes:
+
+- `essays`
+- `fieldNotes`
+- `events`
+- `resources`
+- `releases`
+
+Collection definitions live in [`src/content.config.ts`](./src/content.config.ts).

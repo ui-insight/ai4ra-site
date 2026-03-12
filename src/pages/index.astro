@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const practiceAreas = [
@@ -23,23 +24,17 @@ const participationPaths = [
   "Help define governance, language, and stewardship norms for the ecosystem."
 ];
 
-const releases = [
-  {
-    name: "AI4RA UDM",
-    tag: "Shared data model",
-    body: "A common foundation for research administration data exchange and interpretation."
-  },
-  {
-    name: "OpenERA",
-    tag: "Operational platform",
-    body: "An open application layer for workflows, institutional operations, and interoperable services."
-  },
-  {
-    name: "Vandalizer",
-    tag: "AI workflow layer",
-    body: "A transparent automation layer for experimentation and practical AI support in RA contexts."
-  }
-];
+const releases = (await getCollection("releases", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const latestEssay = (await getCollection("essays", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+)[0];
+
+const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+)[0];
 ---
 
 <BaseLayout
@@ -134,12 +129,42 @@ const releases = [
       {
         releases.map((release) => (
           <article class="release-card">
-            <span class="tag">{release.tag}</span>
-            <h3>{release.name}</h3>
-            <p>{release.body}</p>
+            <span class="tag">{release.data.status}</span>
+            <h3><a href={`/open-source/${release.slug}/`}>{release.data.title}</a></h3>
+            <p>{release.data.description}</p>
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="content-block">
+    <p class="eyebrow">Latest writing</p>
+    <h2 class="section-heading">A living community needs durable public thinking.</h2>
+    <div class="card-grid">
+      {
+        latestEssay && (
+          <article class="content-card">
+            <span class="tag">Essay</span>
+            <h3><a href={`/essays/${latestEssay.slug}/`}>{latestEssay.data.title}</a></h3>
+            <p>{latestEssay.data.description}</p>
+          </article>
+        )
+      }
+      {
+        latestFieldNote && (
+          <article class="content-card">
+            <span class="tag">Field note</span>
+            <h3><a href={`/field-notes/${latestFieldNote.slug}/`}>{latestFieldNote.data.title}</a></h3>
+            <p>{latestFieldNote.data.description}</p>
+          </article>
+        )
+      }
+      <article class="content-card">
+        <span class="tag">Resources</span>
+        <h3><a href="/resources">Browse the library</a></h3>
+        <p>Guides, governance materials, event records, and ecosystem framing collected in one place.</p>
+      </article>
     </div>
   </section>
 

@@ -1,12 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const eventStreams = [
-  "Working sessions",
-  "Community conversations",
-  "Technical demos",
-  "Partner showcases"
-];
+const events = (await getCollection("events", ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.start.getTime() - b.data.start.getTime()
+);
 ---
 
 <BaseLayout title="Events | AI4RA">
@@ -20,12 +18,20 @@ const eventStreams = [
   </section>
 
   <section class="content-block">
-    <div class="card-grid">
+    <div class="stack-list">
       {
-        eventStreams.map((stream) => (
-          <article class="content-card">
-            <h3>{stream}</h3>
-            <p>Use content collections for scheduling, summaries, and follow-up materials.</p>
+        events.map((event) => (
+          <article class="stack-card">
+            <p class="meta-line">
+              {event.data.start.toLocaleString("en-US", {
+                dateStyle: "long",
+                timeStyle: "short"
+              })}
+              {" · "}
+              {event.data.location}
+            </p>
+            <h2><a href={`/events/${event.slug}/`}>{event.data.title}</a></h2>
+            <p>{event.data.description}</p>
           </article>
         ))
       }

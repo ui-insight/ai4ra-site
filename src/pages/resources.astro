@@ -1,14 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const resourceTypes = [
-  "Guides and primers",
-  "Field notes and essays",
-  "Case studies",
-  "Talks and recordings",
-  "Release notes",
-  "Glossaries and shared vocabulary"
-];
+const essays = (await getCollection("essays", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+const notes = (await getCollection("fieldNotes", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+const library = (await getCollection("resources", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
 ---
 
 <BaseLayout title="Resources | AI4RA">
@@ -22,12 +24,30 @@ const resourceTypes = [
   </section>
 
   <section class="content-block">
-    <div class="resource-grid">
+    <p class="eyebrow">Writing and library</p>
+    <div class="stack-list">
+      <article class="stack-card">
+        <p class="meta-line">Essays</p>
+        <h2><a href="/essays">Essays and framing pieces</a></h2>
+        <p>Principles, arguments, and durable language for the community.</p>
+        {essays[0] && <p><a href={`/essays/${essays[0].slug}/`}>Latest: {essays[0].data.title}</a></p>}
+      </article>
+      <article class="stack-card">
+        <p class="meta-line">Field notes</p>
+        <h2><a href="/field-notes">Field notes and implementation observations</a></h2>
+        <p>Grounded patterns and tensions from institutional practice.</p>
+        {notes[0] && (
+          <p><a href={`/field-notes/${notes[0].slug}/`}>Latest: {notes[0].data.title}</a></p>
+        )}
+      </article>
       {
-        resourceTypes.map((item) => (
-          <article class="resource-card">
-            <h3>{item}</h3>
-            <p>Populate this collection with structured content and durable navigation.</p>
+        library.map((item) => (
+          <article class="stack-card">
+            <p class="meta-line">
+              {item.data.publishDate.toLocaleDateString("en-US")} · {item.data.resourceType}
+            </p>
+            <h2><a href={`/resources/library/${item.slug}/`}>{item.data.title}</a></h2>
+            <p>{item.data.description}</p>
           </article>
         ))
       }

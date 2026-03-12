@@ -1,26 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const projects = [
-  {
-    id: "udm",
-    name: "AI4RA UDM",
-    tag: "Shared data model",
-    body: "Position this as the shared language for data structures, interoperability, and institutional translation."
-  },
-  {
-    id: "openera",
-    name: "OpenERA",
-    tag: "Open operational platform",
-    body: "Frame this as the operational application layer for workflows and interoperable research administration services."
-  },
-  {
-    id: "vandalizer",
-    name: "Vandalizer",
-    tag: "AI workflow layer",
-    body: "Present this as a transparent AI automation layer shaped by practitioner use cases and explicit governance."
-  }
-];
+const projects = (await getCollection("releases", ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
 ---
 
 <BaseLayout title="Open Source | AI4RA">
@@ -38,10 +22,10 @@ const projects = [
     <div class="release-grid">
       {
         projects.map((project) => (
-          <article class="release-card" id={project.id}>
-            <span class="tag">{project.tag}</span>
-            <h3>{project.name}</h3>
-            <p>{project.body}</p>
+          <article class="release-card" id={project.slug}>
+            <span class="tag">{project.data.status}</span>
+            <h3><a href={`/open-source/${project.slug}/`}>{project.data.title}</a></h3>
+            <p>{project.data.description}</p>
           </article>
         ))
       }

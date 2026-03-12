@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const releases = await getCollection("releases", ({ data }) => !data.draft);
+
+  return releases.map((release) => ({
+    params: { slug: release.slug },
+    props: { release }
+  }));
+}
+
+const { release } = Astro.props;
+const { Content } = await render(release);
+---
+
+<BaseLayout title={`${release.data.title} | AI4RA`} description={release.data.description}>
+  <article class="article-shell">
+    <div class="article-meta">
+      <p class="eyebrow">Open source release</p>
+      <p class="meta-line">Status: {release.data.status}</p>
+      <h1>{release.data.title}</h1>
+      <p class="lede">{release.data.description}</p>
+      <div class="cta-row">
+        {release.data.repoUrl && <a class="button" href={release.data.repoUrl}>Repository</a>}
+        {release.data.docsUrl && (
+          <a class="button-secondary" href={release.data.docsUrl}>Documentation</a>
+        )}
+      </div>
+    </div>
+    <div class="article-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

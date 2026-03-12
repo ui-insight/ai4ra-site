@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const events = await getCollection("events", ({ data }) => !data.draft);
+
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event }
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+---
+
+<BaseLayout title={`${event.data.title} | AI4RA`} description={event.data.description}>
+  <article class="article-shell">
+    <div class="article-meta">
+      <p class="eyebrow">Event</p>
+      <p class="meta-line">
+        {event.data.start.toLocaleString("en-US", {
+          dateStyle: "long",
+          timeStyle: "short"
+        })}
+        {" · "}
+        {event.data.format}
+      </p>
+      <h1>{event.data.title}</h1>
+      <p class="lede">{event.data.description}</p>
+    </div>
+    <div class="article-body">
+      {event.data.registrationUrl && (
+        <p>
+          <a class="button" href={event.data.registrationUrl}>Registration placeholder</a>
+        </p>
+      )}
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
