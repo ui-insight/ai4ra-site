@@ -18,6 +18,21 @@ can encode norms and make shared work durable, but the deeper aim is cultural an
 institutional. The site should help practitioners find each other, recognize common
 problems, and contribute to public goods that reduce reinvention.
 
+The current field context makes this more urgent, not less. Institutions are managing
+growing compliance demands, uneven data environments, and increasing pressure to adopt AI
+despite limited time to evaluate what trustworthy use would actually require. Those
+pressures are not distributed evenly. Smaller and under-resourced institutions often face
+the hardest adoption choices with the fewest internal options.
+
+That is why the community framing matters. AI4RA can create value even before any single
+tool is released widely if it helps the field:
+
+- share vocabulary
+- compare implementation patterns
+- surface governance expectations
+- document lessons from both successes and failures
+- build public infrastructure that reflects practitioner needs
+
 Three values need to stay visible:
 
 - openness over lock-in

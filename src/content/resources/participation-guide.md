@@ -21,3 +21,8 @@ The site should offer multiple valid entry points:
 - contribute code, documentation, or implementation feedback
 
 Not every participant will be a developer, and the site should signal that clearly.
+
+Good participation design also means helping people understand what stage the work is in.
+At an early stage, the most valuable contribution may be clarifying use cases, naming
+constraints, or identifying where institutional variation is likely to matter. Later,
+contributions may shift toward piloting, documentation, testing, and governance.
