@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../lib/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const projects = (await getCollection("releases", ({ data }) => !data.draft)).sort(
@@ -54,7 +55,7 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
         projects.map((project) => (
           <article class="release-card" id={project.slug}>
             <span class="tag">{project.data.status}</span>
-            <h3><a href={`/open-source/${project.slug}/`}>{project.data.title}</a></h3>
+            <h3><a href={withBase(`/open-source/${project.slug}/`)}>{project.data.title}</a></h3>
             <p>{project.data.description}</p>
           </article>
         ))

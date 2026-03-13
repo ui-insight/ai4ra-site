@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../../lib/paths";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const essays = (await getCollection("essays", ({ data }) => !data.draft)).sort(
@@ -23,7 +24,7 @@ const essays = (await getCollection("essays", ({ data }) => !data.draft)).sort(
         essays.map((essay) => (
           <article class="stack-card">
             <p class="meta-line">{essay.data.publishDate.toLocaleDateString("en-US")}</p>
-            <h2><a href={`/essays/${essay.slug}/`}>{essay.data.title}</a></h2>
+            <h2><a href={withBase(`/essays/${essay.slug}/`)}>{essay.data.title}</a></h2>
             <p>{essay.data.description}</p>
           </article>
         ))

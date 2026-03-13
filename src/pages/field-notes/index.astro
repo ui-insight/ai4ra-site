@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../../lib/paths";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const notes = (await getCollection("fieldNotes", ({ data }) => !data.draft)).sort(
@@ -23,7 +24,7 @@ const notes = (await getCollection("fieldNotes", ({ data }) => !data.draft)).sor
         notes.map((note) => (
           <article class="stack-card">
             <p class="meta-line">{note.data.publishDate.toLocaleDateString("en-US")}</p>
-            <h2><a href={`/field-notes/${note.slug}/`}>{note.data.title}</a></h2>
+            <h2><a href={withBase(`/field-notes/${note.slug}/`)}>{note.data.title}</a></h2>
             <p>{note.data.description}</p>
           </article>
         ))

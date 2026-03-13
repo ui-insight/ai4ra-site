@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../lib/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const essays = (await getCollection("essays", ({ data }) => !data.draft)).sort(
@@ -35,16 +36,16 @@ const library = (await getCollection("resources", ({ data }) => !data.draft)).so
     <div class="stack-list">
       <article class="stack-card">
         <p class="meta-line">Essays</p>
-        <h2><a href="/essays">Essays and framing pieces</a></h2>
+        <h2><a href={withBase("/essays/")}>Essays and framing pieces</a></h2>
         <p>Principles, arguments, and durable language for the community.</p>
-        {essays[0] && <p><a href={`/essays/${essays[0].slug}/`}>Latest: {essays[0].data.title}</a></p>}
+        {essays[0] && <p><a href={withBase(`/essays/${essays[0].slug}/`)}>Latest: {essays[0].data.title}</a></p>}
       </article>
       <article class="stack-card">
         <p class="meta-line">Field notes</p>
-        <h2><a href="/field-notes">Field notes and implementation observations</a></h2>
+        <h2><a href={withBase("/field-notes/")}>Field notes and implementation observations</a></h2>
         <p>Grounded patterns and tensions from institutional practice.</p>
         {notes[0] && (
-          <p><a href={`/field-notes/${notes[0].slug}/`}>Latest: {notes[0].data.title}</a></p>
+          <p><a href={withBase(`/field-notes/${notes[0].slug}/`)}>Latest: {notes[0].data.title}</a></p>
         )}
       </article>
       {
@@ -53,7 +54,7 @@ const library = (await getCollection("resources", ({ data }) => !data.draft)).so
             <p class="meta-line">
               {item.data.publishDate.toLocaleDateString("en-US")} · {item.data.resourceType}
             </p>
-            <h2><a href={`/resources/library/${item.slug}/`}>{item.data.title}</a></h2>
+            <h2><a href={withBase(`/resources/library/${item.slug}/`)}>{item.data.title}</a></h2>
             <p>{item.data.description}</p>
           </article>
         ))

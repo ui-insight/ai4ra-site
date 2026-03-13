@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../lib/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const practiceAreas = [
@@ -77,8 +78,8 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
           few opportunities to shape the tools they depend on.
         </p>
         <div class="hero-actions">
-          <a class="button" href="/community">Join the community</a>
-          <a class="button-secondary" href="/open-source">See the open ecosystem</a>
+          <a class="button" href={withBase("/community/")}>Join the community</a>
+          <a class="button-secondary" href={withBase("/open-source/")}>See the open ecosystem</a>
         </div>
       </div>
       <div class="stat-block">
@@ -183,7 +184,7 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
         releases.map((release) => (
           <article class="release-card">
             <span class="tag">{release.data.status}</span>
-            <h3><a href={`/open-source/${release.slug}/`}>{release.data.title}</a></h3>
+            <h3><a href={withBase(`/open-source/${release.slug}/`)}>{release.data.title}</a></h3>
             <p>{release.data.description}</p>
           </article>
         ))
@@ -199,7 +200,7 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
         latestEssay && (
           <article class="content-card">
             <span class="tag">Essay</span>
-            <h3><a href={`/essays/${latestEssay.slug}/`}>{latestEssay.data.title}</a></h3>
+            <h3><a href={withBase(`/essays/${latestEssay.slug}/`)}>{latestEssay.data.title}</a></h3>
             <p>{latestEssay.data.description}</p>
           </article>
         )
@@ -208,14 +209,14 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
         latestFieldNote && (
           <article class="content-card">
             <span class="tag">Field note</span>
-            <h3><a href={`/field-notes/${latestFieldNote.slug}/`}>{latestFieldNote.data.title}</a></h3>
+            <h3><a href={withBase(`/field-notes/${latestFieldNote.slug}/`)}>{latestFieldNote.data.title}</a></h3>
             <p>{latestFieldNote.data.description}</p>
           </article>
         )
       }
       <article class="content-card">
         <span class="tag">Resources</span>
-        <h3><a href="/resources">Browse the library</a></h3>
+        <h3><a href={withBase("/resources/")}>Browse the library</a></h3>
         <p>Guides, governance materials, event records, and ecosystem framing collected in one place.</p>
       </article>
     </div>
@@ -232,8 +233,8 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
         return to because it helps them think, decide, and build together.
       </p>
       <div class="cta-row">
-        <a class="button" href="/practice-areas">Explore practice areas</a>
-        <a class="button-secondary" href="/about">Read about AI4RA</a>
+        <a class="button" href={withBase("/practice-areas/")}>Explore practice areas</a>
+        <a class="button-secondary" href={withBase("/about/")}>Read about AI4RA</a>
       </div>
     </div>
   </section>
