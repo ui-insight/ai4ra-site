@@ -22,6 +22,11 @@ const { Content } = await render(release);
       <p class="meta-line">Status: {release.data.status}</p>
       <h1>{release.data.title}</h1>
       <p class="lede">{release.data.description}</p>
+      {release.data.audiences.length > 0 && (
+        <p class="lede">
+          Intended audiences: {release.data.audiences.join(", ")}
+        </p>
+      )}
       <div class="cta-row">
         {release.data.repoUrl && <a class="button" href={release.data.repoUrl}>Repository</a>}
         {release.data.docsUrl && (

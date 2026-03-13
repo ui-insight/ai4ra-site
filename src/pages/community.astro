@@ -2,28 +2,64 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const groups = [
-  "Research administrators and program staff",
-  "Institutional leaders and operational stewards",
-  "Data, reporting, and systems professionals",
-  "Open source contributors and implementation partners"
+  {
+    title: "Research administrators and program staff",
+    body: "The people closest to the daily work should shape the language, tooling, and governance of the ecosystem."
+  },
+  {
+    title: "Institutional leaders and operational stewards",
+    body: "Leadership perspectives matter because durable public infrastructure needs sponsorship, legitimacy, and realistic implementation pathways."
+  },
+  {
+    title: "Data, reporting, and systems professionals",
+    body: "These contributors help translate interoperability goals into useful models, integrations, and operational patterns."
+  },
+  {
+    title: "Open source contributors and implementation partners",
+    body: "The ecosystem grows through code, documentation, testing, governance work, and practical institutional feedback."
+  }
 ];
 
 const commitments = [
-  "Practitioner-centered design",
-  "Open collaboration",
-  "Trustworthy AI",
-  "Interoperability",
-  "Shared stewardship"
+  {
+    title: "Practitioner-centered design",
+    body: "The work starts from the realities of research administration rather than imposing a generic platform worldview."
+  },
+  {
+    title: "Open collaboration",
+    body: "The site should make it clear that ideas, resources, and infrastructure improve through visible exchange and critique."
+  },
+  {
+    title: "Trustworthy AI",
+    body: "AI use belongs inside explicit boundaries, accountable workflows, and transparent decision-making."
+  },
+  {
+    title: "Interoperability",
+    body: "Shared language and shared models reduce duplication and make collaboration between institutions more realistic."
+  },
+  {
+    title: "Shared stewardship",
+    body: "Public goods survive when ownership, maintenance, and governance are treated as collective responsibilities."
+  }
+];
+
+const participationWays = [
+  "Attend a working session focused on data standards, workflows, or governance.",
+  "Contribute a use case, pain point, or implementation question from your institution.",
+  "Write a field note describing what worked, what failed, and what still feels unresolved.",
+  "Review and shape the release pages for AI4RA UDM, OpenERA, and Vandalizer.",
+  "Help document community norms, governance expectations, or shared vocabulary."
 ];
 ---
 
 <BaseLayout title="Community | AI4RA">
   <section class="page-intro">
     <p class="eyebrow">Community</p>
-    <h1>A home for people shaping the field together.</h1>
+    <h1>A home for people who want the field to become more open and more shared.</h1>
     <p>
-      This section should become the clearest answer to who belongs in AI4RA, what the
-      community values, and how participation works in practice.
+      AI4RA should make belonging explicit. The goal is not just to publish updates. The
+      goal is to help practitioners, leaders, and collaborators recognize that they are
+      part of a field-building effort with clear values and practical entry points.
     </p>
   </section>
 
@@ -36,26 +72,50 @@ const commitments = [
           and the people responsible for sustaining it institutionally.
         </p>
       </div>
-      <ul class="plain-list">
-        {groups.map((group) => <li>{group}</li>)}
-      </ul>
+      <div class="stack-list">
+        {groups.map((group) => (
+          <article class="stack-card">
+            <h2>{group.title}</h2>
+            <p>{group.body}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="content-block">
-    <h2 class="section-heading">Shared commitments</h2>
+    <p class="eyebrow">Commitments</p>
+    <h2 class="section-heading">The values need to be visible, not inferred.</h2>
+    <p class="section-copy">
+      A community-of-practice site becomes more coherent when it states what it is
+      trying to protect and cultivate. These commitments should recur across the site,
+      the software pages, and the governance language.
+    </p>
     <div class="card-grid">
       {
         commitments.map((commitment) => (
           <article class="content-card">
-            <h3>{commitment}</h3>
-            <p>
-              Add concrete examples, principles, and participation pathways tied to this
-              commitment.
-            </p>
+            <h3>{commitment.title}</h3>
+            <p>{commitment.body}</p>
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <p class="eyebrow">Participation</p>
+        <h2 class="section-heading">Not every contribution is technical, and the site should say that plainly.</h2>
+        <p class="section-copy">
+          If AI4RA is going to function as a gravity well, the pathways into the work
+          need to be concrete and hospitable to different kinds of expertise.
+        </p>
+      </div>
+      <ul class="plain-list">
+        {participationWays.map((item) => <li>{item}</li>)}
+      </ul>
     </div>
   </section>
 </BaseLayout>

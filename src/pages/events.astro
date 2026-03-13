@@ -10,14 +10,22 @@ const events = (await getCollection("events", ({ data }) => !data.draft)).sort(
 <BaseLayout title="Events | AI4RA">
   <section class="page-intro">
     <p class="eyebrow">Events</p>
-    <h1>Visible activity is how the site feels alive.</h1>
+    <h1>Visible activity is how the community becomes believable.</h1>
     <p>
-      Keep events lightweight and current. The goal is to make participation concrete,
-      not to recreate a full event management system.
+      Events should make participation concrete and leave a public trace. The site does
+      not need a heavyweight event platform, but it does need a visible rhythm of shared
+      work.
     </p>
   </section>
 
   <section class="content-block">
+    <p class="eyebrow">Working rhythm</p>
+    <h2 class="section-heading">Use event pages as records of what the community is actually doing.</h2>
+    <p class="section-copy">
+      Over time, event pages should accumulate agendas, materials, recordings, and short
+      summaries so visitors can see that AI4RA is an active professional commons rather
+      than a static project site.
+    </p>
     <div class="stack-list">
       {
         events.map((event) => (

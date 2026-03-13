@@ -269,6 +269,11 @@ img {
   margin-top: 1.5rem;
 }
 
+.compact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0;
+}
+
 .content-card h3,
 .release-card h3,
 .resource-card h3,
@@ -435,6 +440,7 @@ img {
   .hero-panel,
   .split-grid,
   .card-grid,
+  .compact-grid,
   .pillars-grid,
   .release-grid,
   .resource-grid {

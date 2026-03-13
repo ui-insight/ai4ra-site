@@ -1,5 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const aboutPoints = [
+  "AI4RA exists to help research administration become more open, interoperable, and capable of building shared public infrastructure.",
+  "The community-of-practice model matters because institutional knowledge is distributed and the problems are too recurring to keep solving in isolation.",
+  "Open source releases are one expression of the work, but the larger aim is to strengthen the field’s capacity for stewardship, collaboration, and trustworthy adoption."
+];
+
+const stewardshipAreas = [
+  "Mission and field context",
+  "Values and governance",
+  "Institutional partners and contributors",
+  "Funding and public-interest rationale",
+  "How the software ecosystem serves the broader community"
+];
 ---
 
 <BaseLayout title="About | AI4RA">
@@ -7,27 +21,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="eyebrow">About</p>
     <h1>Frame the work in terms of purpose, values, and stewardship.</h1>
     <p>
-      This page should explain the institutional context, public-interest rationale,
-      and the role AI4RA plays in helping the field build shared infrastructure.
+      AI4RA is best understood as a field-building effort. This page should explain the
+      public-interest rationale, the institutional context, and the long-term stewardship
+      logic behind the community and its open infrastructure.
     </p>
   </section>
 
   <section class="split-block">
     <div class="split-grid">
       <div>
-        <h2 class="section-heading">What belongs here</h2>
+        <p class="eyebrow">Framing</p>
+        <h2 class="section-heading">AI4RA should read as a serious civic-professional effort.</h2>
         <p class="section-copy">
-          Use this space for the enduring explanation of mission, partners, origin,
-          governance, and why the community approach matters.
+          The about page needs to do more than list project facts. It should clarify why
+          this work matters for the future of research administration and why a shared
+          community approach is worth sustaining.
         </p>
       </div>
       <ul class="plain-list">
-        <li>Mission and field context</li>
-        <li>Values and governance</li>
-        <li>Institutional partners</li>
-        <li>Funding and stewardship</li>
-        <li>How AI4RA relates to the open source ecosystem</li>
+        {aboutPoints.map((point) => <li>{point}</li>)}
       </ul>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <p class="eyebrow">What belongs here</p>
+    <h2 class="section-heading">Use this page for the durable explanation, not just the origin story.</h2>
+    <div class="card-grid">
+      {
+        stewardshipAreas.map((item) => (
+          <article class="content-card">
+            <h3>{item}</h3>
+            <p>
+              This section should eventually contain stable language that can support the
+              rest of the site, including community pages, release pages, and governance materials.
+            </p>
+          </article>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>

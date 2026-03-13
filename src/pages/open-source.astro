@@ -10,15 +10,42 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
 <BaseLayout title="Open Source | AI4RA">
   <section class="page-intro">
     <p class="eyebrow">Open source</p>
-    <h1>Software as shared infrastructure for the community.</h1>
+    <h1>Software as shared infrastructure for a community of practice.</h1>
     <p>
-      The release pages should connect code to purpose: why the community needs each
-      project, what values shaped it, and how institutions can evaluate, pilot, or
-      contribute.
+      The point of the open source section is not to market products. It is to show how
+      the community is turning shared values into durable public goods. Every release
+      page should connect code to purpose, governance, and institutional usefulness.
     </p>
   </section>
 
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <p class="eyebrow">Ecosystem logic</p>
+        <h2 class="section-heading">The releases make more sense together than separately.</h2>
+        <p class="section-copy">
+          AI4RA UDM provides shared language, OpenERA turns that language into
+          operational capability, and Vandalizer explores AI-enabled workflows under
+          explicit constraints. The site should help visitors understand that relationship
+          quickly.
+        </p>
+      </div>
+      <ul class="plain-list">
+        <li><strong>AI4RA UDM</strong> creates a common semantic layer for data and interoperability.</li>
+        <li><strong>OpenERA</strong> provides an open operational layer for workflows and services.</li>
+        <li><strong>Vandalizer</strong> adds a governed automation layer for targeted AI use cases.</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="content-block">
+    <p class="eyebrow">Release pages</p>
+    <h2 class="section-heading">Each project needs purpose, status, and governance in plain view.</h2>
+    <p class="section-copy">
+      The release pages should help both practitioners and technical collaborators answer
+      the same questions: why this exists, what state it is in, how it relates to the
+      ecosystem, and what kind of contribution is useful now.
+    </p>
     <div class="release-grid">
       {
         projects.map((project) => (
@@ -29,6 +56,26 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <p class="eyebrow">Contribution</p>
+        <h2 class="section-heading">Participation should not collapse into “open source equals developers only.”</h2>
+        <p class="section-copy">
+          The ecosystem needs code, but it also needs evaluators, pilot partners,
+          documentation writers, governance contributors, and institutions willing to
+          surface real constraints.
+        </p>
+      </div>
+      <ul class="plain-list">
+        <li>Review release framing and identify missing institutional assumptions.</li>
+        <li>Contribute use cases and workflow examples before implementation hardens.</li>
+        <li>Help test documentation, language, and adoption pathways.</li>
+        <li>Participate in governance and stewardship conversations, not only code work.</li>
+      </ul>
     </div>
   </section>
 </BaseLayout>

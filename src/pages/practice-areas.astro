@@ -4,11 +4,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const areas = [
   {
     title: "Data Standards and Interoperability",
-    body: "Shared semantics, vocabularies, and institution-friendly data exchange patterns."
+    body: "Shared semantics, vocabularies, and institution-friendly data exchange patterns that reduce translation burden."
   },
   {
     title: "Workflow and Service Design",
-    body: "Operational design patterns for proposal development, award management, and research support."
+    body: "Operational design patterns for proposal development, award management, service delivery, and handoffs between units."
   },
   {
     title: "Responsible AI in RA",
@@ -16,11 +16,11 @@ const areas = [
   },
   {
     title: "Governance and Stewardship",
-    body: "Models for community ownership, contribution, and long-term maintenance."
+    body: "Models for community ownership, contribution, decision-making, and long-term maintenance."
   },
   {
     title: "Implementation and Change",
-    body: "Case studies and field notes from institutions adapting shared ideas locally."
+    body: "Case studies and field notes from institutions adapting shared ideas locally without pretending every environment is identical."
   }
 ];
 ---
@@ -28,14 +28,22 @@ const areas = [
 <BaseLayout title="Practice Areas | AI4RA">
   <section class="page-intro">
     <p class="eyebrow">Practice areas</p>
-    <h1>Organize the site around the work, not just the outputs.</h1>
+    <h1>Organize the site around the work, not just the projects.</h1>
     <p>
-      This section gives the community a durable structure for publishing guidance,
-      open questions, field notes, and implementation lessons.
+      Practice areas give the community a durable structure for publishing guidance,
+      surfacing open questions, comparing approaches, and connecting editorial work to
+      the software ecosystem.
     </p>
   </section>
 
   <section class="content-block">
+    <p class="eyebrow">Shared agenda</p>
+    <h2 class="section-heading">These are the lanes where collective work becomes useful.</h2>
+    <p class="section-copy">
+      Each practice area should eventually have its own essays, field notes, resources,
+      and event history so the site becomes easier to navigate by real professional
+      concerns rather than by internal project boundaries.
+    </p>
     <div class="card-grid">
       {
         areas.map((area) => (

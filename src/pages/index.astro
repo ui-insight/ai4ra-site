@@ -4,24 +4,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const practiceAreas = [
   {
-    title: "Data Standards",
-    body: "Build shared language for research administration data, reporting, and interoperability."
+    title: "Data Standards and Interoperability",
+    body: "Develop shared language for research administration data so institutions can compare, exchange, and steward information more coherently."
   },
   {
     title: "Responsible AI",
-    body: "Explore where AI can support research administration without obscuring accountability."
+    body: "Explore where AI can support research administration without obscuring accountability, context, or human judgment."
   },
   {
     title: "Operational Design",
-    body: "Document workflows, governance patterns, and implementation lessons from real institutions."
+    body: "Document workflows, governance patterns, and implementation lessons grounded in how research administration actually works."
+  },
+  {
+    title: "Governance and Stewardship",
+    body: "Treat public infrastructure as a long-term stewardship problem, not just a release milestone."
   }
 ];
 
 const participationPaths = [
-  "Join working sessions and shared conversations about practice.",
-  "Contribute use cases, field notes, and implementation questions.",
-  "Follow or pilot open source releases shaped by practitioner needs.",
+  "Join working sessions and community conversations about practice.",
+  "Contribute use cases, field notes, and implementation questions from your institution.",
+  "Review and shape the open source releases before they become fixed assumptions.",
   "Help define governance, language, and stewardship norms for the ecosystem."
+];
+
+const audienceCards = [
+  {
+    title: "Research administrators",
+    body: "Bring workflow realities, policy pressures, and the daily knowledge that should shape shared infrastructure."
+  },
+  {
+    title: "Institutional leaders",
+    body: "Help articulate what trustworthy, sustainable, and adoptable public infrastructure requires at the organizational level."
+  },
+  {
+    title: "Data and systems teams",
+    body: "Translate interoperability goals into technical patterns that fit real institutional constraints."
+  },
+  {
+    title: "Open source contributors",
+    body: "Support the ecosystem through code, documentation, testing, governance, and implementation feedback."
+  }
 ];
 
 const releases = (await getCollection("releases", ({ data }) => !data.draft))
@@ -45,33 +68,34 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
     <div class="hero-panel">
       <div>
         <p class="eyebrow">Community of practice</p>
-        <h1>Open practice for research administration.</h1>
+        <h1>Build a stronger public commons for research administration.</h1>
         <p class="hero-copy">
-          AI4RA convenes research administration professionals, institutional partners,
-          and technical collaborators to develop shared methods, shared language, and
-          open infrastructure for the field.
+          AI4RA is a community of practice for people who want research administration
+          to become more open, interoperable, trustworthy, and collaborative. We use
+          shared inquiry, shared language, and open source infrastructure to make that
+          work durable.
         </p>
         <div class="hero-actions">
-          <a class="button" href="/community">Enter the community</a>
-          <a class="button-secondary" href="/open-source">Explore the ecosystem</a>
+          <a class="button" href="/community">Join the community</a>
+          <a class="button-secondary" href="/open-source">See the ecosystem</a>
         </div>
       </div>
       <div class="stat-block">
         <div class="stat-card">
-          <strong>3</strong>
-          <span>Public releases anchoring the ecosystem</span>
+          <strong>People first</strong>
+          <span>Practice and stewardship drive the site, with software in service of the field</span>
         </div>
         <div class="stat-card">
           <strong>5</strong>
-          <span>Practice domains for shared learning and field-building</span>
+          <span>Practice domains organizing shared inquiry, resources, and implementation lessons</span>
         </div>
         <div class="stat-card">
           <strong>Open</strong>
-          <span>Governance, code, and institutional dialogue designed for contribution</span>
+          <span>Governance, code, and institutional dialogue intended to remain inspectable and participatory</span>
         </div>
         <div class="stat-card">
-          <strong>RA-led</strong>
-          <span>Built around practitioner knowledge rather than imported abstraction</span>
+          <strong>3 releases</strong>
+          <span>AI4RA UDM, OpenERA, and Vandalizer as shared assets within a larger ecosystem</span>
         </div>
       </div>
     </div>
@@ -79,12 +103,12 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
 
   <section class="content-block">
     <p class="eyebrow">Why this exists</p>
-    <h2 class="section-heading">A field needs more than software. It needs a commons.</h2>
+    <h2 class="section-heading">A field needs more than tools. It needs a place to think together.</h2>
     <p class="section-copy">
-      The AI4RA site should function as a public home for shared inquiry, practical
-      guidance, and durable infrastructure. The software matters because it reflects
-      community values: interoperability over silos, stewardship over hype, and
-      collaborative public goods over isolated reinvention.
+      Research administration is full of recurring problems that institutions often solve
+      alone: data translation, workflow design, reporting friction, tool fragmentation,
+      and now the pressure to adopt AI without clear norms. AI4RA exists to reduce that
+      isolation by making shared learning and shared public goods visible.
     </p>
     <div class="card-grid">
       {
@@ -101,12 +125,34 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
   <section class="split-block">
     <div class="split-grid">
       <div>
+        <p class="eyebrow">Who belongs here</p>
+        <h2 class="section-heading">The site should make the field legible to itself.</h2>
+        <p class="section-copy">
+          This is not just a publishing surface for announcements. It should help people
+          see where they fit in the community and what forms of contribution matter.
+        </p>
+      </div>
+      <div class="card-grid compact-grid">
+        {
+          audienceCards.map((item) => (
+            <article class="content-card">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
         <p class="eyebrow">Participation</p>
         <h2 class="section-heading">Clear ways to belong and contribute.</h2>
         <p class="section-copy">
-          Visitors should be able to find themselves in the site immediately whether
-          they are practitioners, institutional leaders, technical collaborators, or
-          contributors to the open source stack.
+          The most important job of the homepage is to convert affinity into action.
+          People should be able to identify a next step even if they never touch code.
         </p>
       </div>
       <ul class="plain-list">
@@ -119,11 +165,11 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
 
   <section class="content-block">
     <p class="eyebrow">Open source</p>
-    <h2 class="section-heading">Community assets, not detached product pages.</h2>
+    <h2 class="section-heading">Software as shared infrastructure, not a detached product showcase.</h2>
     <p class="section-copy">
-      AI4RA UDM, OpenERA, and Vandalizer should live inside a coherent ecosystem story,
-      each release page explaining why the community needs it, who shapes it, and how
-      to engage as a practitioner or contributor.
+      AI4RA UDM, OpenERA, and Vandalizer belong here because the community is building
+      practical public goods. Each release should be framed in terms of purpose,
+      governance, and contribution, not just features.
     </p>
     <div class="release-grid">
       {
@@ -170,16 +216,16 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
 
   <section class="callout-band">
     <div class="callout-panel">
-      <p class="eyebrow">Next build stage</p>
-      <h2 class="section-heading">Turn this into a living editorial and community platform.</h2>
+      <p class="eyebrow">What this site should signal</p>
+      <h2 class="section-heading">Research administration can build public infrastructure for itself.</h2>
       <p>
-        The next step is to wire content collections, build the six primary sections,
-        and add durable release pages that connect ecosystem governance, participation,
-        and technical documentation.
+        The site should feel like a serious professional commons: practical, generous,
+        rigorous, and grounded in the work. That tone matters as much as the software
+        pages because it is what creates the gravity well you described.
       </p>
       <div class="cta-row">
-        <a class="button" href="/practice-areas">View practice areas</a>
-        <a class="button-secondary" href="/about">Read the framing</a>
+        <a class="button" href="/practice-areas">Explore practice areas</a>
+        <a class="button-secondary" href="/about">Read about AI4RA</a>
       </div>
     </div>
   </section>
