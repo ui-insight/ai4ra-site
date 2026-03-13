@@ -17,8 +17,10 @@ const currentPath = normalizePath(Astro.url.pathname);
 <header class="site-header">
   <div class="shell">
     <div class="brand-lockup">
-      <a class="brand-mark" href={withBase("/")}>AI4RA</a>
-      <p class="brand-line">Open practice for research administration</p>
+      <a href={withBase("/")} style="display:flex;align-items:center;gap:0.6rem;">
+        <img class="brand-logo" src={withBase("/ai4ra-logo.png")} alt="AI4RA logo" />
+        <span class="brand-line">Open practice for research administration</span>
+      </a>
     </div>
     <nav aria-label="Primary">
       <ul class="nav-list">
