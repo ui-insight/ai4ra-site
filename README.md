@@ -29,6 +29,17 @@ npm install
 npm run dev
 ```
 
+## Preview Deployment
+
+GitHub Pages is configured as the preview target for this repository.
+
+- pull requests run the `Build` workflow
+- pushes to `main` run the `Deploy Preview` workflow
+- the preview URL is intended to be `https://ui-insight.github.io/ai4ra-site/`
+
+The Astro config reads `SITE_URL` and `BASE_PATH` from the environment so the same codebase
+can support both the GitHub Pages preview and the future production deployment.
+
 ## Current Scaffold
 
 The repo now includes a minimal Astro app with initial routes for:

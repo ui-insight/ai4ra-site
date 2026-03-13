@@ -1,5 +1,9 @@
 import { defineConfig } from "astro/config";
 
+const site = process.env.SITE_URL ?? "https://ai4ra.uidaho.edu";
+const base = process.env.BASE_PATH ?? "/";
+
 export default defineConfig({
-  site: "https://ai4ra.uidaho.edu"
+  site,
+  base
 });
