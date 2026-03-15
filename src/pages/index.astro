@@ -19,6 +19,10 @@ const practiceAreas = [
   {
     title: "Governance and Stewardship",
     body: "Treat public infrastructure as a long-term stewardship problem, not just a release milestone or a grant deliverable."
+  },
+  {
+    title: "Implementation and Change",
+    body: "Capture how institutions adapt shared ideas locally so the ecosystem reflects real constraints instead of idealized rollout stories."
   }
 ];
 
@@ -78,7 +82,7 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
           few opportunities to shape the tools they depend on.
         </p>
         <div class="hero-actions">
-          <a class="button" href={withBase("/community/")}>Join the community</a>
+          <a class="button" href={withBase("/community/")}>Explore the community</a>
           <a class="button-secondary" href={withBase("/open-source/")}>See the open ecosystem</a>
         </div>
       </div>
@@ -166,6 +170,11 @@ const latestFieldNote = (await getCollection("fieldNotes", ({ data }) => !data.d
           participationPaths.map((item) => <li>{item}</li>)
         }
       </ul>
+    </div>
+    <div class="cta-row">
+      <a class="button" href={withBase("/resources/library/participation-guide/")}>Start with the participation guide</a>
+      <a class="button-secondary" href={withBase("/events/")}>Browse events</a>
+      <a class="button-secondary" href={withBase("/open-source/")}>Review release pages</a>
     </div>
   </section>
 

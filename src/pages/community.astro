@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const groups = [
@@ -121,6 +122,23 @@ const participationWays = [
       <ul class="plain-list">
         {participationWays.map((item) => <li>{item}</li>)}
       </ul>
+    </div>
+  </section>
+
+  <section class="callout-band">
+    <div class="callout-panel">
+      <p class="eyebrow">Start here</p>
+      <h2 class="section-heading">Use the participation guide, then pick an event or release page.</h2>
+      <p>
+        The site already supports three practical entry points: a guide for understanding
+        contribution paths, event pages that make community activity visible, and release
+        pages that show where institutional feedback is still most valuable.
+      </p>
+      <div class="cta-row">
+        <a class="button" href={withBase("/resources/library/participation-guide/")}>Read participation guide</a>
+        <a class="button-secondary" href={withBase("/events/")}>See events</a>
+        <a class="button-secondary" href={withBase("/open-source/")}>Review releases</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

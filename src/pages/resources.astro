@@ -61,4 +61,21 @@ const library = (await getCollection("resources", ({ data }) => !data.draft)).so
       }
     </div>
   </section>
+
+  <section class="callout-band">
+    <div class="callout-panel">
+      <p class="eyebrow">Use this library</p>
+      <h2 class="section-heading">Start with one framing piece, one field note, and one participation path.</h2>
+      <p>
+        The resources section is most useful when it helps visitors move from orientation
+        to action. Read a framing essay, compare it with an implementation note, and then
+        use the participation guide or an event page to decide where to engage next.
+      </p>
+      <div class="cta-row">
+        <a class="button" href={withBase("/resources/library/participation-guide/")}>Participation guide</a>
+        <a class="button-secondary" href={withBase("/essays/")}>Browse essays</a>
+        <a class="button-secondary" href={withBase("/field-notes/")}>Browse field notes</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

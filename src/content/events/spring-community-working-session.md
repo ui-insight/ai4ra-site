@@ -9,8 +9,9 @@ status: upcoming
 registrationUrl: https://ai4ra.uidaho.edu
 ---
 
-This session is a placeholder for the events model and should eventually include the
-working agenda, discussion prompts, related materials, and follow-up notes.
+This session will focus on data standards, governance questions, and practical
+participation pathways for the AI4RA ecosystem.
 
-Use event pages for more than scheduling. They should become durable public records of
-what the community worked on and what decisions or questions emerged.
+The event page should also carry the working agenda, related materials, and follow-up
+notes so it becomes a durable public record of what the community discussed and what
+questions or decisions emerged.
