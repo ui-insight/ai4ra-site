@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import { withBase } from "../../lib/paths";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -13,26 +14,86 @@ export async function getStaticPaths() {
 
 const { release } = Astro.props;
 const { Content } = await render(release);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: release.data.title,
+  description: release.data.description,
+  audience: release.data.audiences,
+  applicationCategory: "Research Administration",
+  offers: {
+    "@type": "Offer",
+    availability:
+      release.data.status === "released"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/PreOrder"
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AI4RA"
+  }
+};
 ---
 
-<BaseLayout title={`${release.data.title} | AI4RA`} description={release.data.description}>
+<BaseLayout
+  title={`${release.data.title} | AI4RA`}
+  description={release.data.description}
+  structuredData={structuredData}
+>
   <article class="article-shell">
     <div class="article-meta">
       <p class="eyebrow">Open source release</p>
       <p class="meta-line">Status: {release.data.status}</p>
       <h1>{release.data.title}</h1>
       <p class="lede">{release.data.description}</p>
-      {release.data.audiences.length > 0 && (
-        <p class="lede">
-          Intended audiences: {release.data.audiences.join(", ")}
-        </p>
-      )}
       <div class="cta-row">
-        {release.data.repoUrl && <a class="button" href={release.data.repoUrl}>Repository</a>}
-        {release.data.docsUrl && (
-          <a class="button-secondary" href={release.data.docsUrl}>Documentation</a>
+        {release.data.repoUrl && (
+          <a class="button" href={release.data.repoUrl} target="_blank" rel="noreferrer">
+            Repository
+          </a>
         )}
+        {release.data.docsUrl && (
+          <a class="button-secondary" href={release.data.docsUrl} target="_blank" rel="noreferrer">
+            Documentation
+          </a>
+        )}
+        {!release.data.repoUrl && (
+          <a class="button" href="https://github.com/ui-insight/ai4ra-site" target="_blank" rel="noreferrer">
+            Follow site updates
+          </a>
+        )}
+        <a class="button-secondary" href={withBase("/resources/library/participation-guide/")}>
+          Participation guide
+        </a>
       </div>
+    </div>
+    <div class="release-summary-grid">
+      <article class="content-card">
+        <span class="tag">Current stage</span>
+        <h2>{release.data.status}</h2>
+        <p>{release.data.statusNote}</p>
+      </article>
+      <article class="content-card">
+        <span class="tag">Intended for</span>
+        <h2>Primary audiences</h2>
+        <ul class="plain-list compact-list">
+          {release.data.audiences.map((audience) => <li>{audience}</li>)}
+        </ul>
+      </article>
+      <article class="content-card">
+        <span class="tag">Useful now</span>
+        <h2>How to engage</h2>
+        <ul class="plain-list compact-list">
+          {release.data.engagementPaths.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article class="content-card">
+        <span class="tag">What to watch</span>
+        <h2>Near-term signals</h2>
+        <ul class="plain-list compact-list">
+          {release.data.nearTermSignals.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
     </div>
     <div class="article-body">
       <Content />

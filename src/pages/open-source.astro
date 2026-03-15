@@ -6,6 +6,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const projects = (await getCollection("releases", ({ data }) => !data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
+const releaseCount = projects.length;
+const plannedCount = projects.filter((project) => project.data.status === "planned").length;
 ---
 
 <BaseLayout title="Open Source | AI4RA">
@@ -41,6 +43,33 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
   </section>
 
   <section class="content-block">
+    <p class="eyebrow">Current state</p>
+    <h2 class="section-heading">This ecosystem is real, but it is still early.</h2>
+    <p class="section-copy">
+      The site should say plainly when something is still in formation. That increases
+      trust, reduces product-style ambiguity, and helps contributors understand where
+      their input can still materially shape the work.
+    </p>
+    <div class="card-grid">
+      <article class="content-card">
+        <span class="tag">Releases</span>
+        <h3>{releaseCount} ecosystem projects</h3>
+        <p>AI4RA UDM, OpenERA, and Vandalizer are being framed as related public assets rather than isolated tools.</p>
+      </article>
+      <article class="content-card">
+        <span class="tag">Status</span>
+        <h3>{plannedCount} currently planned</h3>
+        <p>The emphasis is still on framing, governance, use cases, and institutional fit rather than launch theater.</p>
+      </article>
+      <article class="content-card">
+        <span class="tag">Participation</span>
+        <h3>Contribution is still wide open</h3>
+        <p>Practitioner review, workflow critique, evaluation criteria, and governance work are as important as code.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-block">
     <p class="eyebrow">Release pages</p>
     <h2 class="section-heading">Each project needs purpose, status, and governance in plain view.</h2>
     <p class="section-copy">
@@ -57,6 +86,29 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
             <span class="tag">{project.data.status}</span>
             <h3><a href={withBase(`/open-source/${project.slug}/`)}>{project.data.title}</a></h3>
             <p>{project.data.description}</p>
+            <p class="meta-line">Current stage</p>
+            <p>{project.data.statusNote}</p>
+            {project.data.audiences.length > 0 && (
+              <>
+                <p class="meta-line">Primary audiences</p>
+                <p>{project.data.audiences.join(", ")}</p>
+              </>
+            )}
+            {project.data.engagementPaths[0] && (
+              <>
+                <p class="meta-line">Useful now</p>
+                <p>{project.data.engagementPaths[0]}</p>
+              </>
+            )}
+            {project.data.nearTermSignals[0] && (
+              <>
+                <p class="meta-line">What to watch</p>
+                <p>{project.data.nearTermSignals[0]}</p>
+              </>
+            )}
+            <div class="cta-row">
+              <a class="button-secondary" href={withBase(`/open-source/${project.slug}/`)}>Read release page</a>
+            </div>
           </article>
         ))
       }
@@ -80,6 +132,22 @@ const projects = (await getCollection("releases", ({ data }) => !data.draft)).so
         <li>Help test documentation, language, and adoption pathways.</li>
         <li>Participate in governance and stewardship conversations, not only code work.</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="callout-band">
+    <div class="callout-panel">
+      <p class="eyebrow">Where to start</p>
+      <h2 class="section-heading">Start with the release page, then move into the participation guide.</h2>
+      <p>
+        Until each project has its own public repository and documentation surface linked
+        here, the most honest next step is to read the framing, identify gaps, and use
+        the participation guide to understand what kind of contribution is useful now.
+      </p>
+      <div class="cta-row">
+        <a class="button" href={withBase("/resources/library/participation-guide/")}>Read participation guide</a>
+        <a class="button-secondary" href={withBase("/events/")}>See upcoming events</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

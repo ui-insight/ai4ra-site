@@ -358,6 +358,15 @@ img {
   border: 1px solid var(--line);
 }
 
+.compact-list {
+  margin-top: 0.75rem;
+  gap: 0.6rem;
+}
+
+.compact-list li {
+  padding: 0.7rem 0.85rem;
+}
+
 /* ── Callout Band ── */
 .callout-band {
   margin: 2rem auto 4rem;
@@ -456,6 +465,24 @@ img {
   margin-bottom: 1.75rem;
 }
 
+.release-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.release-summary-grid h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.05;
+}
+
+.release-summary-grid .content-card {
+  height: 100%;
+}
+
 .article-body {
   padding: 1.5rem;
   border-radius: var(--radius-lg);
@@ -544,7 +571,8 @@ img {
   .compact-grid,
   .pillars-grid,
   .release-grid,
-  .resource-grid {
+  .resource-grid,
+  .release-summary-grid {
     grid-template-columns: 1fr;
   }
 

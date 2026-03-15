@@ -2,11 +2,20 @@
 title: AI4RA UDM
 description: The shared data model layer for common language, interoperability, and durable exchange across research administration systems.
 status: planned
+statusNote: The model is still being framed and validated with practitioners, so the most valuable work is clarifying scope, terms, and real institutional edge cases before anything hardens.
 order: 1
 audiences:
   - research administrators
   - data teams
   - institutional IT
+engagementPaths:
+  - Identify terms or concepts that are defined inconsistently across institutions.
+  - Contribute reporting, workflow, or interoperability use cases that expose real translation pain.
+  - Review whether proposed definitions capture operational distinctions that matter in practice.
+nearTermSignals:
+  - Versioned definitions and change history
+  - Worked examples from multiple institution types
+  - Clear language separating stable concepts from active debate
 ---
 
 AI4RA UDM is the semantic foundation of the AI4RA ecosystem. Its role is to create a

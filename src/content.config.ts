@@ -57,10 +57,13 @@ const releases = defineCollection({
     title: z.string(),
     description: z.string(),
     status: z.enum(["concept", "planned", "in-development", "pilot", "released"]),
+    statusNote: z.string(),
     order: z.number(),
     repoUrl: z.string().url().optional(),
     docsUrl: z.string().url().optional(),
     audiences: z.array(z.string()).default([]),
+    engagementPaths: z.array(z.string()).default([]),
+    nearTermSignals: z.array(z.string()).default([]),
     draft: z.boolean().default(false)
   })
 });

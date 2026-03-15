@@ -2,11 +2,20 @@
 title: OpenERA
 description: The open operational platform layer for research administration workflows and interoperable services.
 status: planned
+statusNote: OpenERA is still at the framing stage, so the immediate need is to validate workflow assumptions and identify where openness and interoperability would create the most operational value.
 order: 2
 audiences:
   - operations teams
   - institutional leaders
   - implementers
+engagementPaths:
+  - Describe workflow pain points, coordination failures, and brittle handoffs that should shape the platform.
+  - Identify high-value operational areas where openness and interoperability matter most.
+  - Contribute implementation constraints from local systems, policy environments, and staffing realities.
+nearTermSignals:
+  - A sharper statement of which workflows OpenERA is meant to support first
+  - Examples distinguishing conceptual direction from pilot-ready capabilities
+  - Clear contribution guidance for implementation partners and evaluators
 ---
 
 OpenERA is the operational platform layer within the AI4RA ecosystem. Where AI4RA UDM

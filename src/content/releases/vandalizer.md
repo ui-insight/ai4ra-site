@@ -2,11 +2,20 @@
 title: Vandalizer
 description: The AI workflow layer for transparent, governed automation in research administration contexts.
 status: planned
+statusNote: Vandalizer is best treated as a governed exploration space, so useful progress now depends on bounded use cases, review expectations, and visible failure modes rather than broad automation claims.
 order: 3
 audiences:
   - research administrators
   - AI practitioners
   - technical collaborators
+engagementPaths:
+  - Identify high-friction administrative tasks that may be suitable for bounded automation.
+  - Review proposed workflows for hidden policy, compliance, or accountability risks.
+  - Contribute evaluation criteria for trustworthiness, reproducibility, and practical usefulness.
+nearTermSignals:
+  - Explicit use cases with clear boundaries
+  - Human-review expectations for each workflow
+  - Documentation of limitations, provenance, and failure handling
 ---
 
 Vandalizer is the AI workflow layer in the AI4RA ecosystem. Its purpose is not to add AI
