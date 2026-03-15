@@ -13,9 +13,25 @@ export async function getStaticPaths() {
 
 const { resource } = Astro.props;
 const { Content } = await render(resource);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: resource.data.title,
+  description: resource.data.description,
+  datePublished: resource.data.publishDate.toISOString(),
+  audience: resource.data.audience,
+  publisher: {
+    "@type": "Organization",
+    name: "AI4RA"
+  }
+};
 ---
 
-<BaseLayout title={`${resource.data.title} | AI4RA`} description={resource.data.description}>
+<BaseLayout
+  title={`${resource.data.title} | AI4RA`}
+  description={resource.data.description}
+  structuredData={structuredData}
+>
   <article class="article-shell">
     <div class="article-meta">
       <p class="eyebrow">Resource</p>

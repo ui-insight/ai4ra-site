@@ -1,15 +1,33 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import { withBase } from "../lib/paths";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { title, description = "AI4RA community of practice for open and trustworthy research administration." } =
-  Astro.props;
+const {
+  title,
+  description = "AI4RA community of practice for open and trustworthy research administration.",
+  image = "/ai4ra-logo.png",
+  type = "website",
+  structuredData
+} = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString();
+const socialImagePath = image.startsWith("http://") || image.startsWith("https://") ? image : withBase(image);
+const socialImageUrl = Astro.site ? new URL(socialImagePath, Astro.site).toString() : socialImagePath;
+const structuredDataItems = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
 ---
 
 <!doctype html>
@@ -17,9 +35,28 @@ const { title, description = "AI4RA community of practice for open and trustwort
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="data:," />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#191919" />
+    <link rel="icon" type="image/png" href={withBase("/ai4ra-logo.png")} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title="AI4RA Feed" href={withBase("/feed.xml")} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:site_name" content="AI4RA" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    {
+      structuredDataItems.map((item) => (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
   </head>
   <body>
     <div class="page-frame">
