@@ -1,66 +1,157 @@
 ---
+import { withBase } from "../lib/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const aboutPoints = [
-  "AI4RA exists to help research administration become more open, interoperable, and capable of building shared public infrastructure.",
-  "The community-of-practice model matters because institutional knowledge is distributed and the problems are too recurring to keep solving in isolation.",
-  "Open source releases are one expression of the work, but the larger aim is to strengthen the field’s capacity for stewardship, collaboration, and trustworthy adoption."
+const purposePoints = [
+  "AI4RA helps research administration become more open, interoperable, and capable of building shared public infrastructure.",
+  "The community-of-practice model matters because the field's knowledge is distributed, and recurring problems are too costly to keep solving in isolation.",
+  "Open source releases are part of the work, but the larger aim is to strengthen the field's capacity for stewardship, collaboration, and trustworthy adoption."
 ];
 
-const stewardshipAreas = [
-  "Mission and field context",
-  "Values and governance",
-  "Institutional partners and contributors",
-  "Funding and public-interest rationale",
-  "How the software ecosystem serves the broader community"
+const operatingAreas = [
+  {
+    title: "Community before platform",
+    body: "AI4RA treats research administration as a professional commons. The point is to help institutions learn in public, compare approaches, and build durable shared assets together."
+  },
+  {
+    title: "Stewardship before launch theater",
+    body: "The work is oriented toward what can be maintained, governed, and trusted over time, especially by institutions with uneven capacity and very different local constraints."
+  },
+  {
+    title: "Practice before abstraction",
+    body: "Useful infrastructure starts with workflow realities, reporting burdens, policy context, and the practical knowledge of the people doing the work every day."
+  }
+];
+
+const workAreas = [
+  {
+    title: "Shared language and interoperability",
+    body: "Develop common definitions, data models, and exchange patterns that reduce translation burden across institutions and systems."
+  },
+  {
+    title: "Operational learning",
+    body: "Document workflows, field notes, and implementation patterns so institutions can learn from one another instead of rebuilding alone."
+  },
+  {
+    title: "Governed open source",
+    body: "Support ecosystem projects like AI4RA UDM, OpenERA, and Vandalizer as public goods shaped by visible purpose, scope, and contribution pathways."
+  },
+  {
+    title: "Trustworthy AI practice",
+    body: "Create room to evaluate AI use cases under clear boundaries, human review expectations, and explicit accountability rather than hype."
+  }
+];
+
+const stewardshipPoints = [
+  "Practitioners, implementers, and institutional leaders all have a role in shaping the work.",
+  "Governance is part of the product, not a layer added after technical decisions are already fixed.",
+  "The ecosystem should remain inspectable, discussable, and adaptable across institution types.",
+  "Participation includes writing, critique, field observation, implementation feedback, and code."
 ];
 ---
 
-<BaseLayout title="About | AI4RA">
+<BaseLayout
+  title="About | AI4RA"
+  description="AI4RA is a community of practice building open, trustworthy, practitioner-centered infrastructure for research administration."
+>
   <section class="page-intro">
     <p class="eyebrow">About</p>
-    <h1>Frame the work in terms of purpose, values, and stewardship.</h1>
+    <h1>AI4RA is building a stronger public commons for research administration.</h1>
     <p>
-      AI4RA is best understood as a field-building effort. This page should explain the
-      public-interest rationale, the institutional context, and the long-term stewardship
-      logic behind the community and its open infrastructure.
+      AI4RA is a community of practice focused on making research administration more
+      open, interoperable, and trustworthy. It brings together practitioners,
+      institutional stewards, and technical collaborators to develop shared language,
+      shared learning, and shared infrastructure that the field can actually use.
     </p>
   </section>
 
   <section class="split-block">
     <div class="split-grid">
       <div>
-        <p class="eyebrow">Framing</p>
-        <h2 class="section-heading">AI4RA should read as a serious civic-professional effort.</h2>
+        <p class="eyebrow">Why it exists</p>
+        <h2 class="section-heading">Too many institutions are solving the same problems alone.</h2>
         <p class="section-copy">
-          The about page needs to do more than list project facts. It should clarify why
-          this work matters for the future of research administration and why a shared
-          community approach is worth sustaining. The current public site already makes a
-          strong case that disparities in infrastructure affect institutions unevenly. The
-          rework should preserve that argument while broadening it into a durable public mission.
+          Research administration is under growing pressure: more reporting complexity,
+          more fragmented systems, more uneven infrastructure, and now more interest in
+          AI without enough shared norms for deciding what should be trusted. Those
+          pressures do not land evenly. Institutions with fewer technical resources often
+          face the hardest choices with the fewest paths forward. AI4RA exists to reduce
+          that isolation and help the field build public capacity together.
         </p>
       </div>
       <ul class="plain-list">
-        {aboutPoints.map((point) => <li>{point}</li>)}
+        {purposePoints.map((point) => <li>{point}</li>)}
       </ul>
     </div>
   </section>
 
   <section class="content-block">
-    <p class="eyebrow">What belongs here</p>
-    <h2 class="section-heading">Use this page for the durable explanation, not just the origin story.</h2>
+    <p class="eyebrow">How AI4RA works</p>
+    <h2 class="section-heading">This is field-building work, not just a software initiative.</h2>
+    <p class="section-copy">
+      AI4RA combines editorial work, community activity, governance development, and
+      open source stewardship. The software matters, but it sits inside a broader effort
+      to make the field more legible to itself and more capable of building durable
+      public goods.
+    </p>
     <div class="card-grid">
       {
-        stewardshipAreas.map((item) => (
+        workAreas.map((item) => (
           <article class="content-card">
-            <h3>{item}</h3>
-            <p>
-              This section should eventually contain stable language that can support the
-              rest of the site, including community pages, release pages, and governance materials.
-            </p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="content-block">
+    <p class="eyebrow">Operating principles</p>
+    <h2 class="section-heading">The work is guided by concrete choices about how to build.</h2>
+    <div class="card-grid">
+      {
+        operatingAreas.map((item) => (
+          <article class="content-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="split-block">
+    <div class="split-grid">
+      <div>
+        <p class="eyebrow">Stewardship</p>
+        <h2 class="section-heading">AI4RA is meant to be participatory, inspectable, and durable.</h2>
+        <p class="section-copy">
+          That means treating governance, contribution pathways, and institutional fit as
+          first-class parts of the work. The community should be able to see what is in
+          formation, where input is useful, and how shared assets relate to the broader
+          mission of strengthening research administration as a public-serving field.
+        </p>
+      </div>
+      <ul class="plain-list">
+        {stewardshipPoints.map((point) => <li>{point}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="callout-band">
+    <div class="callout-panel">
+      <p class="eyebrow">From mission to action</p>
+      <h2 class="section-heading">After this page, the next step is to join the work or explore the ecosystem.</h2>
+      <p>
+        The community section shows how people can participate through events, shared
+        inquiry, and contribution pathways. The open source section shows how AI4RA UDM,
+        OpenERA, and Vandalizer fit into the larger public-interest mission.
+      </p>
+      <div class="cta-row">
+        <a class="button" href={withBase("/community/")}>Go to community</a>
+        <a class="button-secondary" href={withBase("/open-source/")}>Explore the ecosystem</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
