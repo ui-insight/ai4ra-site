@@ -380,6 +380,32 @@ img {
   border: 1px solid var(--charcoal);
 }
 
+.featured-note-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(241, 179, 0, 0.12), rgba(241, 179, 0, 0) 40%),
+    var(--white);
+  border: 1px solid rgba(241, 179, 0, 0.24);
+  box-shadow: var(--shadow);
+}
+
+.featured-note-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-note-copy p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
 .callout-panel .eyebrow {
   color: var(--gold);
 }
@@ -572,6 +598,7 @@ img {
   .pillars-grid,
   .release-grid,
   .resource-grid,
+  .featured-note-panel,
   .release-summary-grid {
     grid-template-columns: 1fr;
   }
